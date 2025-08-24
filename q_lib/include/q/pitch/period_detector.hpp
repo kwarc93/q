@@ -124,7 +124,7 @@ namespace cycfi::q
             int               _i2 = -1;
             int               _period = -1;
             float             _periodicity = 0.0f;
-            std::size_t       _harmonic;
+            std::size_t       _harmonic = 1;
          };
 
          sub_collector(zero_crossing_collector const& zc, float period_diff_threshold, int range_)
@@ -133,7 +133,7 @@ namespace cycfi::q
                period_detector::harmonic_periodicity_factor*2 / zc.window_size())
           , _period_diff_threshold(period_diff_threshold)
           , _range(range_)
-         {}
+         { _first_period = -1.0f; }
 
          bool empty() const
          {
